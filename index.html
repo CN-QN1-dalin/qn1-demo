@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QN1 Demo — 0.5B + SignalField</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.min.css">
+<style>
+  body { margin:0; padding:40px 20px; background:#0d1117; color:#c9d1d9; font-family:-apple-system,BlinkMacSystemFont,sans-serif; text-align:center; }
+  h1 { font-size:24px; margin-bottom:8px; }
+  h1 span { color:#58a6ff; }
+  p.desc { color:#8b949e; margin-bottom:24px; }
+  #player { max-width:900px; margin:0 auto; border-radius:8px; overflow:hidden; box-shadow:0 0 40px rgba(88,166,255,0.15); }
+  .links { margin-top:24px; }
+  .links a { color:#58a6ff; text-decoration:none; margin:0 12px; }
+  .links a:hover { text-decoration:underline; }
+  .result { margin:24px auto; max-width:700px; text-align:left; background:#161b22; border-radius:8px; padding:20px; }
+  .result table { width:100%; border-collapse:collapse; }
+  .result th { text-align:left; padding:8px 12px; border-bottom:1px solid #30363d; }
+  .result td { padding:8px 12px; border-bottom:1px solid #21262d; }
+  .check { color:#3fb950; }
+  .cross { color:#f85149; }
+</style>
+</head>
+<body>
+<h1><span>QN1</span> — Small Model × Smart Memory</h1>
+<p class="desc">0.5B parameters · 88 tok/s · M1 Pro 16GB · Near-large-model recall</p>
+
+<div id="player"></div>
+
+<div class="result">
+<table>
+<tr><th>Test</th><th>Raw 0.5B</th><th>+ SignalField</th></tr>
+<tr><td>Describe Mars</td><td class="check">✓</td><td class="check">✓</td></tr>
+<tr><td>Atmosphere</td><td class="cross">✗ helium!</td><td class="check">✓ CO₂</td></tr>
+<tr><td>Atlas robot</td><td class="check">✓</td><td class="check">✓</td></tr>
+<tr><td><strong>Recall: planet?</strong></td><td class="cross">✗ solar system</td><td class="check">✓ Mars</td></tr>
+<tr><td><strong>Recall: company?</strong></td><td class="cross">✗ Sony</td><td class="check">✓ Boston Dynamics</td></tr>
+</table>
+</div>
+
+<div class="links">
+<a href="https://github.com/CN-QN1-dalin/qn1-demo">📁 GitHub</a>
+<a href="https://github.com/CN-QN1-dalin/ringbuffer">⭕ RingBuffer</a>
+<a href="https://github.com/CN-QN1-dalin/ultra-infer">🧠 Ultra Infer</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.min.js"></script>
+<script>
+  AsciinemaPlayer.create('demo.cast', document.getElementById('player'), {
+    autoPlay: false,
+    loop: false,
+    fit: 'width',
+    theme: 'monokai',
+    idleTimeLimit: 1,
+    preload: true
+  });
+</script>
+</body>
+</html>
